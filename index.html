@@ -10,12 +10,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Video Background -->
     <video class="bg-video" id="bg-video" muted loop playsinline></video>
-    <!-- Image Background -->
     <div class="bg-layer" id="bg-layer"></div>
 
-    <!-- Top Buttons -->
     <button class="icon-btn top-btn theme-toggle" id="theme-toggle" title="Toggle theme">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
     </button>
@@ -24,51 +21,90 @@
     </button>
 
     <div class="dashboard">
-        <!-- Greeting -->
         <div class="greeting" id="greeting">
             <span class="greeting-icon" id="greeting-icon"></span>
             <span id="greeting-text">Good morning</span>
         </div>
 
-        <!-- Clock Widget -->
         <div class="widget clock-widget">
             <div class="time" id="time">00:00:00</div>
             <div class="date" id="date">Loading...</div>
         </div>
 
-        <!-- Search Bar -->
-        <div class="widget search-widget">
-            <form class="search-form" id="search-form">
-                <div class="search-wrapper">
-                    <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                    <input type="text" class="search-input" id="search-input" placeholder="Search with Brave..." autocomplete="off" />
+        <div class="dashboard-grid">
+            <div class="dashboard-col">
+                <!-- Countdown Widget -->
+                <div class="widget countdown-widget">
+                    <div class="widget-header">
+                        <h2>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            Countdown
+                        </h2>
+                        <button class="icon-btn-sm add-countdown-btn" id="countdown-settings-btn" title="Set countdown">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        </button>
+                    </div>
+                    <div class="countdown-content" id="countdown-content">
+                        <div class="countdown-title" id="countdown-title">Set a countdown</div>
+                        <div class="countdown-timer" id="countdown-timer">
+                            <div class="countdown-unit"><span id="countdown-days">0</span><span class="countdown-label">Days</span></div>
+                            <div class="countdown-unit"><span id="countdown-hours">0</span><span class="countdown-label">Hours</span></div>
+                            <div class="countdown-unit"><span id="countdown-mins">0</span><span class="countdown-label">Mins</span></div>
+                            <div class="countdown-unit"><span id="countdown-secs">0</span><span class="countdown-label">Secs</span></div>
+                        </div>
+                    </div>
+                    <div class="countdown-settings" id="countdown-settings" style="display:none;">
+                        <input type="text" class="countdown-name-input" id="countdown-name-input" placeholder="Event name..." />
+                        <input type="datetime-local" class="countdown-date-input" id="countdown-date-input" />
+                        <div class="countdown-settings-row">
+                            <button class="save-btn" id="countdown-save-btn">Set</button>
+                            <button class="save-btn bg-remove-btn" id="countdown-clear-btn">Clear</button>
+                        </div>
+                    </div>
                 </div>
-            </form>
-        </div>
 
-        <!-- Quote Widget -->
-        <div class="widget quote-widget">
-            <svg class="quote-mark" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" opacity="0.3"><path d="M10 11h-4v4h4v-4zM18 11h-4v4h4v-4z"/></svg>
-            <p class="quote-text" id="quote-text">Loading...</p>
-            <p class="quote-author" id="quote-author"></p>
-        </div>
-
-        <!-- Weather Widget -->
-        <div class="widget weather-widget">
-            <div class="widget-header">
-                <h2>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
-                    Weather
-                </h2>
+                <!-- Inspiration Widget -->
+                <div class="widget inspiration-widget">
+                    <div class="widget-header">
+                        <h2>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                            Inspiration
+                        </h2>
+                        <button class="icon-btn-sm settings-btn" id="refresh-inspiration-btn" title="Refresh">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                        </button>
+                    </div>
+                    <div class="inspiration-content-vertical">
+                        <p class="inspo-quote" id="inspo-quote">Loading...</p>
+                        <p class="inspo-author" id="inspo-author"></p>
+                        <div class="inspo-fact" id="inspo-fact">
+                            <span class="inspo-fact-label">Fact</span>
+                            <span id="inspo-fact-text">Loading fact...</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="weather-content" id="weather-content">
-                <p class="weather-placeholder">Loading weather...</p>
+            <!-- This closes the first dashboard-col -->
+
+            <div class="dashboard-col">
+                <!-- Weather Widget -->
+                <div class="widget weather-widget">
+                    <div class="widget-header">
+                        <h2>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+                            Weather
+                        </h2>
+                    </div>
+                    <div class="weather-content" id="weather-content">
+                        <p class="weather-placeholder">Loading weather...</p>
+                    </div>
+                    <div class="saved-cities" id="saved-cities" style="display: none;"></div>
+                </div>
             </div>
-            <div class="saved-cities" id="saved-cities" style="display: none;"></div>
         </div>
 
-        <!-- Settings Widget (moved to sidebar by JS) -->
-        <div class="widget settings-widget" id="settings-widget">
+        <!-- Settings Widget (hidden, moved to sidebar by JS) -->
+        <div class="widget settings-widget" id="settings-widget" style="display:none;">
             <div class="widget-header">
                 <h2>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
@@ -109,11 +145,11 @@
                 </div>
             </div>
             <div class="settings-row" id="bg-video-row" style="display:none;">
-                <label>Video URL (YouTube or direct MP4)</label>
+                <label>Video URL</label>
                 <div class="video-input-row">
                     <input type="text" class="settings-input" id="video-url-input" placeholder="YouTube URL or .mp4 link..." />
                     <button class="save-btn" id="video-url-save-btn">Load</button>
-                    <button class="save-btn bg-remove-btn" id="video-clear-btn" title="Clear video" style="flex-shrink:0;">Clear</button>
+                    <button class="save-btn bg-remove-btn" id="video-clear-btn">Clear</button>
                 </div>
             </div>
             <div class="settings-row">
