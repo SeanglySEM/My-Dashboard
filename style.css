@@ -38,13 +38,18 @@
 
 body {
     font-family: var(--font);
-    background: #0a0a0f;
+    background: var(--bg);
     color: var(--text);
     min-height: 100vh;
     transition: background 0.5s ease, color 0.3s;
     position: relative;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+/* No BG mode — follows theme */
+body.no-bg {
+    background: var(--bg) !important;
 }
 
 .bg-video {
@@ -285,18 +290,47 @@ body {
 .sidebar-section .weather-input-row { display: flex; gap: 0.5rem; }
 
 /* ============ WEATHER BACKGROUNDS ============ */
-body.weather-sunny { --bg: #fef9e7; }
-body.weather-cloudy { --bg: #eaeef2; }
-body.weather-rainy { --bg: #dce3e8; }
-body.weather-snowy { --bg: #e8eef5; }
-body.weather-stormy { --bg: #d5d8dc; }
-body.weather-night { --bg: #1a1d2e; }
-.dark.weather-sunny { --bg: #1a1a0a; }
-.dark.weather-cloudy { --bg: #0f1118; }
-.dark.weather-rainy { --bg: #0a0f14; }
-.dark.weather-snowy { --bg: #0c1018; }
-.dark.weather-stormy { --bg: #0a0a10; }
-.dark.weather-night { --bg: #080c18; }
+body.weather-sunny:not(.dark):not(.no-bg) { background: #fef9e7; }
+body.weather-cloudy:not(.dark):not(.no-bg) { background: #eaeef2; }
+body.weather-rainy:not(.dark):not(.no-bg) { background: #dce3e8; }
+body.weather-snowy:not(.dark):not(.no-bg) { background: #e8eef5; }
+body.weather-stormy:not(.dark):not(.no-bg) { background: #d5d8dc; }
+body.weather-night:not(.dark):not(.no-bg) { background: #1a1d2e; }
+body.dark.weather-sunny:not(.no-bg) { background: #1a1a0a; }
+body.dark.weather-cloudy:not(.no-bg) { background: #0f1118; }
+body.dark.weather-rainy:not(.no-bg) { background: #0a0f14; }
+body.dark.weather-snowy:not(.no-bg) { background: #0c1018; }
+body.dark.weather-stormy:not(.no-bg) { background: #0a0a10; }
+body.dark.weather-night:not(.no-bg) { background: #080c18; }
+
+/* no-bg always wins */
+body.no-bg,
+body.no-bg.weather-sunny,
+body.no-bg.weather-cloudy,
+body.no-bg.weather-rainy,
+body.no-bg.weather-snowy,
+body.no-bg.weather-stormy,
+body.no-bg.weather-night,
+body.dark.no-bg,
+body.dark.no-bg.weather-sunny,
+body.dark.no-bg.weather-cloudy,
+body.dark.no-bg.weather-rainy,
+body.dark.no-bg.weather-snowy,
+body.dark.no-bg.weather-stormy,
+body.dark.no-bg.weather-night {
+    background: #0f0f1a !important;
+}
+
+/* Light mode no-bg — white background */
+body:not(.dark).no-bg,
+body:not(.dark).no-bg.weather-sunny,
+body:not(.dark).no-bg.weather-cloudy,
+body:not(.dark).no-bg.weather-rainy,
+body:not(.dark).no-bg.weather-snowy,
+body:not(.dark).no-bg.weather-stormy,
+body:not(.dark).no-bg.weather-night {
+    background: #f0f2f5 !important;
+}
 
 /* ============ KEYFRAMES ============ */
 @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
