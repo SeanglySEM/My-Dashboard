@@ -95,8 +95,11 @@ function setBgType(type) {
             btn.classList.add('active');
             btn.style.background = 'var(--accent)'; btn.style.color = '#fff'; btn.style.borderColor = 'var(--accent)';
         } else {
-            btn.style.background = 'transparent'; btn.style.color = 'var(--text)'; btn.style.borderColor = 'var(--border)';
-        }
+                bgLayer.style.backgroundImage = 'none'; bgLayer.style.display = 'none';
+                document.body.style.background = '#0a0a0f';
+                if (imageRow) imageRow.style.display = 'none';
+                if (videoRow) videoRow.style.display = 'none';
+            }
     });
     var imageRow = document.getElementById('bg-image-row');
     var videoRow = document.getElementById('bg-video-row');

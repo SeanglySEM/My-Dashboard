@@ -38,7 +38,7 @@
 
 body {
     font-family: var(--font);
-    background: var(--bg);
+    background: #0a0a0f;
     color: var(--text);
     min-height: 100vh;
     transition: background 0.5s ease, color 0.3s;
@@ -312,6 +312,8 @@ body.weather-night { --bg: #1a1d2e; }
 
 /* ============ RESPONSIVE ============ */
 @media (max-width: 700px) {
+    .bg-layer { display: none !important; }
+    .bg-video { display: none !important; }
     .dashboard { padding: 4rem 1rem 4rem; }
     .dashboard-grid { grid-template-columns: 1fr; }
     .time { font-size: 2.8rem; letter-spacing: 3px; }
